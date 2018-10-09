@@ -17,8 +17,14 @@ while (ans == 'y' or ans == 'Y'):
         print(rss)
         print()
     except:
-        print("Unable to find RSS")
-        print()
+        try:
+            rss = re.findall(r'/channel/(.*)', url)
+            rss = "https://www.youtube.com/feeds/videos.xml?channel_id=" + rss[0]
+            print(rss)
+            print()
+        except:
+            print("Unable to find RSS")
+            print()
 
     ans = input("Would you like to enter another url? ('y' or 'n'): ")
     print()
